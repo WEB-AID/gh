@@ -41,14 +41,14 @@ export default function Header() {
     return (
         <header className="w-screen fixed h-24 lg:h-32 bg-white shadow-inner-orange">
             <div className={`h-full flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}>
-                <nav className="relative w-64">
-                    <button
-                        onClick={toggleBurger} className={`burger-button md:hidden p-4 mr-auto mt-auto mb-auto flex ${isBurgerOpen ? 'hidden' : ''}`}
-                    >
-                        <pre>  ☰</pre>
-                    </button>
+                <button
+                    onClick={toggleBurger} className={`burger-button md:hidden p-4 mr-auto mt-auto mb-auto flex ${isBurgerOpen ? 'hidden' : ''}`}
+                >
+                    <pre>  ☰</pre>
+                </button>
+                <nav className={`relative w-64 z-20 transition-transform duration-1000 ease-in-out ${isBurgerOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
                     {isBurgerOpen && (
-                        <div className="burger-menu w-full absolute top-0 left-0 bg-white shadow-lg">
+                        <div className={`burger-menu w-full absolute top-0 left-0 bg-white shadow-lg`}>
                             <button onClick={toggleBurger} >
                                 <Image
                                     src="/cancel.png"
