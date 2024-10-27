@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const Overlay = ({ onClick }: any) => {
+const Overlay = ({ onClick }: { onClick: () => void }) => {
     return (
         <div
             className="fixed inset-0 bg-white opacity-90 z-10"
@@ -19,18 +19,20 @@ export default function Header() {
     };
 
     useEffect(() => {
-        function handleClickOutside(event: any) {
-            if (isBurgerOpen && !event.target.closest(".burger-menu")) {
+        function handleClickOutside(event: MouseEvent) {
+            if (isBurgerOpen && !(event.target as HTMLElement).closest(".burger-menu")) {
                 setBurgerOpen(false);
             }
         }
+
         document.addEventListener("mousedown", handleClickOutside);
-        // Отключаем прокрутку, когда меню открыто
+
         if (isBurgerOpen) {
             document.body.classList.add("overflow-hidden");
         } else {
             document.body.classList.remove("overflow-hidden");
         }
+
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
@@ -94,6 +96,6 @@ export default function Header() {
                 </div>
             </div>
             {isBurgerOpen && <Overlay onClick={toggleBurger} />}
-        </header >
-    )
+        </header>
+    );
 }
