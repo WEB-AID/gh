@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'inner-orange': 'inset 0 0 10px rgba(255, 165, 0, 0.5)',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
