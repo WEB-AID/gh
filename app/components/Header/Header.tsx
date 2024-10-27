@@ -44,7 +44,12 @@ export default function Header() {
                 <button
                     onClick={toggleBurger} className={`burger-button md:hidden p-4 mr-auto mt-auto mb-auto flex ${isBurgerOpen ? 'hidden' : ''}`}
                 >
-                    <pre>  ☰</pre>
+                    <Image
+                        src="/burger.png"
+                        alt="burger"
+                        width="50"
+                        height="50"
+                    />
                 </button>
                 <nav className={`md:hidden relative w-64 z-20 transition-transform duration-1000 ease-in-out ${isBurgerOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
                     {isBurgerOpen && (
