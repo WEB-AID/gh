@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Greetings() {
     return (
-        <div className="md:overflow-hidden">
+        <div className="md:overflow-hidden mt-6">
             <div className="flex flex-col md:flex-row md:w-full md:items-center">
                 <article className="flex flex-center items-center flex-col max-[767px]:px-12 md:px-0 max-[767px]:mx-auto md:pl-24 md:w-1/2">
                     <h1 className="text-xl mb-5">Georgian House</h1>

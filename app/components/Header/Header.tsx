@@ -41,14 +41,14 @@ export default function Header() {
     return (
         <header className="w-screen fixed h-24 lg:h-32 bg-white shadow-inner-orange">
             <div className={`h-full flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}>
-                <nav className="relative">
+                <nav className="relative w-64">
                     <button
                         onClick={toggleBurger} className={`burger-button md:hidden p-4 mr-auto mt-auto mb-auto flex ${isBurgerOpen ? 'hidden' : ''}`}
                     >
                         <pre>  ☰</pre>
                     </button>
                     {isBurgerOpen && (
-                        <div className="burger-menu w-60vh absolute top-0 left-0 bg-white shadow-lg">
+                        <div className="burger-menu w-full absolute top-0 left-0 bg-white shadow-lg">
                             <button onClick={toggleBurger} >
                                 <Image
                                     src="/cancel.png"
@@ -58,7 +58,7 @@ export default function Header() {
                                     className="absolute -right-16 top-4 z-20"
                                 />
                             </button>
-                            <ul className="w-60vh absolute left-0 top-0 flex flex-col gap-12 p-8 bg-white shadow-inner-orange z-20">
+                            <ul className="w-full absolute left-0 top-0 flex flex-col gap-12 p-8 bg-white shadow-inner-orange z-20">
                                 <li>მთავარი</li>
                                 <li>გალერია</li>
                                 <li>ფასი</li>
