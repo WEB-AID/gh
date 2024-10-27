@@ -27,7 +27,7 @@ function Main() {
           width="0"
           height="0"
           sizes="100vw"
-          className="w-full h-40vh md:h-70vh"
+          className="w-full h-60vh md:h-70vh"
         />
       </div>
       <Greetings />
