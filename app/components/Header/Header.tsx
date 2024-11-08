@@ -79,7 +79,7 @@ export default function Header() {
                 className={`relative h-full flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}
             >
                 {/* LOGO */}
-                <div className="absolute top-4 mr-5 max-[767px]:right-8">
+                <div className="absolute top-4 mr-5 max-[767px]:right-4">
                     <Link href="/">
                         <Image
                             src="/logo1.png"
