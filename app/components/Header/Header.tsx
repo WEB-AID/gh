@@ -31,11 +31,13 @@ export default function Header() {
 
     const MenuItem = ({
         name,
+        path,
         isActive,
         onClick,
         additionalClass,
     }: {
         name: string
+        path: string
         isActive: boolean
         onClick?: () => void
         additionalClass?: string
@@ -44,7 +46,7 @@ export default function Header() {
             onClick={onClick}
             className={`self-start cursor-pointer hover:text-orange-600 ${isActive ? 'border-b-2 border-orange-300' : ''} ${additionalClass}`}
         >
-            {name}
+            <Link href={path}>{name}</Link>
         </li>
     )
 
@@ -73,7 +75,7 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed w-screen h-24 lg:h-32 bg-white shadow-inner-orange'}`}
+            className={`fixed w-screen h-24 lg:h-32 bg-white shadow-inner-orange`}
         >
             <div
                 className={`relative h-full flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}
@@ -113,11 +115,13 @@ export default function Header() {
                             {menuItems.map((item) => (
                                 <MenuItem
                                     key={item.path}
-                                    name={item.name!}
+                                    name={item.name}
+                                    path={item.path}
                                     isActive={pathname === item.path}
-                                    onClick={() =>
-                                        handleMenuItemClick(item.path!)
-                                    }
+                                    onClick={() => {
+                                        handleMenuItemClick(item.path)
+                                        setBurgerOpen(false)
+                                    }}
                                 />
                             ))}
                         </ul>
@@ -133,19 +137,15 @@ export default function Header() {
                     </div>
                     {/* DESKTOP HEADER MENU */}
                     <ul className="hidden md:flex md:justify-center md:items-center md:gap-2 lg:gap-10">
-                        {menuItems.map((item) => {
-                            return (
-                                <MenuItem
-                                    key={item.path}
-                                    name={item.name!}
-                                    isActive={pathname === item.path}
-                                    onClick={() =>
-                                        handleMenuItemClick(item.path!)
-                                    }
-                                    additionalClass={`${item.type === 'beforeLogo' ? 'mr-10' : item.type === 'afterLogo' ? 'ml-24' : ''}`}
-                                />
-                            )
-                        })}
+                        {menuItems.map((item) => (
+                            <MenuItem
+                                key={item.path}
+                                name={item.name!}
+                                path={item.path}
+                                isActive={pathname === item.path}
+                                additionalClass={`${item.type === 'beforeLogo' ? 'mr-10' : item.type === 'afterLogo' ? 'ml-24' : ''}`}
+                            />
+                        ))}
                     </ul>
                 </nav>
             </div>
