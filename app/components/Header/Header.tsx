@@ -58,7 +58,7 @@ export default function Header() {
             className={`fixed w-screen h-24 lg:h-32 bg-white shadow-inner-orange flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}
         >
             {/* MOBILE LOGO */}
-            <div className="absolute md:hidden right-10 top-6">
+            <div className="absolute md:hidden right-8 top-6">
                 <Link href="/">
                     <Image
                         src="/logo1.png"
