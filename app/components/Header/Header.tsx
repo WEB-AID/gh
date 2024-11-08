@@ -63,8 +63,10 @@ export default function Header() {
                     <Image
                         src="/logo1.png"
                         alt="logo"
-                        width="150"
-                        height="150"
+                        width="0"
+                        height="0"
+                        sizes="100vw"
+                        className="w-28"
                     />
                 </Link>
             </div>
@@ -125,8 +127,9 @@ export default function Header() {
                                         <Image
                                             src="/logo1.png"
                                             alt="logo"
-                                            width="250"
-                                            height="250"
+                                            width="0"
+                                            height="0"
+                                            sizes="100vw"
                                             className="absolute w-24 lg:w-40 -mt-8 lg:-mt-10 -translate-x-1/2"
                                         />
                                     </Link>
