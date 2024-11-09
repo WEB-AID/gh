@@ -13,7 +13,7 @@ export default function Home() {
                     sizes="100vw"
                     className="w-full h-35vh md:hidden"
                 />
-                <p className="md:hidden text-xs absolute w-3/4 top-10 left-10 text-white font-bold text-lg py-2">
+                <p className="md:hidden text-xs absolute w-3/4 max-[767px]:top-3 max-[767px]:w-3/5 top-10 max-[767px]:left-6 left-10 text-white font-bold text-lg py-2">
                     ფერმის ცხოველების მიწოდების მომსახურება, სპეციალიზირებული
                     მაღალი ხარისხის ღორების გაყიდვაში აგრარული
                     საზოგადოებისათვის.
@@ -29,7 +29,7 @@ export default function Home() {
                     sizes="100vw"
                     className="w-full h-45vh md:h-70vh max-[767px]:hidden"
                 />
-                <p className="max-[767px]:hidden text-3xl absolute w-4/5 top-20 lg:top-24 left-10 text-white font-bold text-lg py-2">
+                <p className="max-[767px]:hidden text-3xl absolute w-4/5 top-16 mt-8 lg:mt-4 lg:top-22 lg:text-3xl left-10 text-white font-bold text-lg py-2">
                     ფერმის ცხოველების მიწოდების მომსახურება, სპეციალიზირებული
                     მაღალი ხარისხის ღორების გაყიდვაში აგრარული
                     საზოგადოებისათვის.
