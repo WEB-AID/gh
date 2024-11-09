@@ -75,7 +75,7 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed w-screen h-24 lg:h-32 bg-white shadow-inner-orange`}
+            className={`fixed w-screen h-24 lg:h-32 bg-white shadow-inner-orange z-50`}
         >
             <div
                 className={`relative h-full flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}
@@ -86,8 +86,8 @@ export default function Header() {
                         <Image
                             src="/logo1.png"
                             alt="logo"
-                            width="0"
-                            height="0"
+                            width="150"
+                            height="150"
                             sizes="100vw"
                             className="w-28 lg:w-32"
                         />
@@ -134,6 +134,13 @@ export default function Header() {
                                 className="absolute -right-16 top-4 z-20"
                             />
                         </button>
+                        {/* USER LOGIN */}
+                        <button
+                            className={`absolute top-2 right-2 md:top-2 md: right-12 lg:right-64 flex justify-center items-center h-6 w-24 bg-orange-950 text-white`}
+                            onClick={toggleBurger}
+                        >
+                            <Link href="/login">შესვლა</Link>
+                        </button>
                     </div>
                     {/* DESKTOP HEADER MENU */}
                     <ul className="hidden md:flex md:justify-center md:items-center md:gap-2 lg:gap-10">
@@ -148,6 +155,22 @@ export default function Header() {
                         ))}
                     </ul>
                 </nav>
+                {/* LANGUAGE SELECTOR */}
+                <div className="absolute top-4 right-4 md:top-1/2 md:right-8 transform max-[767px]:hidden">
+                    <div className="relative">
+                        <select className="p-2 border rounded-lg">
+                            <option value="ge">Ge</option>
+                            <option value="en">En</option>
+                            <option value="de">Ru</option>
+                        </select>
+                    </div>
+                </div>
+                {/* USER LOGIN */}
+                <button
+                    className={`absolute top-4 right-4 md:top-2 md:right-12 lg:right-64 flex items-center justify-center h-6 w-24 bg-orange-950 text-white max-[767px]:hidden`}
+                >
+                    <Link href="/login">შესვლა</Link>
+                </button>
             </div>
             {isBurgerOpen && <Overlay onClick={toggleBurger} />}
         </header>

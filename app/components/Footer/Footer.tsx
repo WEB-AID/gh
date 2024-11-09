@@ -2,29 +2,29 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const footerMenuItems = [
-    { name: '· მთავარი', path: '/' },
-    { name: '· გალერია', path: '/galery' },
-    { name: '· ჩვენზე', path: '/about' },
-    { name: '· სიახლეები', path: '/news' },
-    { name: '· კონტაქტები', path: '/contact' },
-    { name: '· თანამშრომლობა', path: '/cooperation' },
-    { name: '· სწავლება', path: '/learning' },
-    { name: '· ვაკანსიები', path: '/vacancies' },
-    { name: '· ფასი', path: '/pricing' },
+    { name: 'მთავარი', path: '/' },
+    { name: 'გალერია', path: '/galery' },
+    { name: 'ფასი', path: '/pricing' },
+
+    { name: 'სიახლეები', path: '/news' },
+    { name: 'კონტაქტები', path: '/contact' },
+    { name: 'ჩვენზე', path: '/about' },
+
+    { name: 'სწავლება', path: '/learning' },
+    { name: 'ვაკანსიები', path: '/vacancies' },
+    { name: 'თანამშრომლობა', path: '/cooperation' },
 ]
 
 export default function Footer() {
     return (
         <footer className="h-min text-white bg-yellow-950 p-4">
-            <div className="w-11/12 lg:w-4/5 h-96 md:h-36 lg:h-48 mx-auto flex justify-center items-center flex-col md:flex-row order-1 md:order-2">
-                <ul className="h-full mx-auto grid grid-rows-5 md:grid-rows-3 max-[767px]:grid-cols-2 grid-flow-col md:gap-x-2 md:order-2">
+            {/* MENU AND LOGO\ISO */}
+            <div className="w-11/12 lg:w-4/5 h-96 md:h-36 lg:h-48 mt-4 mx-auto flex justify-center items-center flex-col order-1 md:flex-row md:order-2">
+                <ul className="h-full mx-auto grid grid-rows-5 grid-flow-col md:grid-rows-3 max-[767px]:grid-cols-2 md:gap-x-2 md:order-2 text-left ">
                     {footerMenuItems.map((item) => (
-                        <li
-                            key={item.name}
-                            className="flex justify-start items-center"
-                        >
+                        <li key={item.name} className="flex items-center">
                             <Link href={item.path}>
-                                <span className="hover:underline">
+                                <span className="hover:underline before:content-['·'] before:mr-2 ">
                                     {item.name}
                                 </span>
                             </Link>
@@ -43,7 +43,7 @@ export default function Footer() {
                         y1="0"
                         x2="0"
                         y2="190"
-                        stroke="white"
+                        stroke="gray"
                         strokeWidth="2"
                     />
                 </svg>
@@ -69,7 +69,7 @@ export default function Footer() {
                         y1="0"
                         x2="0"
                         y2="190"
-                        stroke="white"
+                        stroke="gray"
                         strokeWidth="2"
                     />
                 </svg>
@@ -93,11 +93,19 @@ export default function Footer() {
                 </div>
             </div>
             {/* TEXT FIELD */}
-            <div className="text-center mt-8">
-                111111111111111111111111111111111111111 3333333333333333333
+            <div className="text-center mt-8 text-gray-300 text-sm">
+                ჩვენთვის უმნიშვნელოვანესია ჩვენი პროდუქციის ხარისხი და
+                უსაფრთხოება. საიტზე მოცემული ინფორმაცია განკუთვნილია საყოველთაო
+                გაცნობისთვის.
+            </div>
+            <div className="text-center mt-2 text-gray-300 text-sm">
+                გთხოვთ, დაგვიკავშირდეთ დამატებითი ინფორმაციისთვის და კომერციული
+                შეთავაზებების მისაღებად.
             </div>
             {/* COPYRIGHT */}
-            <div className="text-center mt-8">COPYRIGHT 2024</div>
+            <div className="text-center mt-8 text-gray-400">
+                Copyright © 2024 Georgian House LLC
+            </div>
         </footer>
     )
 }
