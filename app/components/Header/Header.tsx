@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import Overlay from '@/app/uikit/overlay'
 
-const menuItems = [
+export const menuItems = [
     { name: 'მთავარი', path: '/' },
     { name: 'გალერია', path: '/galery' },
     { name: 'ჩვენზე', path: '/about', type: 'beforeLogo' },
