@@ -108,10 +108,10 @@ export default function Header() {
                     </button>
                     {/* MOBILE BURGER MENU */}
                     <div
-                        className={`burger-menu absolute w-full md:hidden bg-white shadow-lg -translate-x-full opacity-0 
-                            transition-transform duration-1000 ${isBurgerOpen ? 'translate-x-0 opacity-100' : ''}`}
+                        className={`burger-menu absolute w-full h-auto md:hidden  bg-white -translate-x-full opacity-0 
+                            transition-transform duration-1000 ${isBurgerOpen ? 'translate-x-0 opacity-100' : ''} flex bg-white shadow-inner-orange`}
                     >
-                        <ul className="absolute w-full top-0 left-0 p-8 flex flex-col gap-12 bg-white shadow-inner-orange">
+                        <ul className="w-7/12 top-0 left-0 p-8 flex flex-col gap-12">
                             {menuItems.map((item) => (
                                 <MenuItem
                                     key={item.path}
@@ -134,6 +134,16 @@ export default function Header() {
                                 className="absolute -right-16 top-4 z-20"
                             />
                         </button>
+                        {/* LANGUAGE SELECTOR */}
+                        <div className="absolute bottom-2 right-2 md:hidden md:right-8">
+                            <div className="relative">
+                                <select className="p-2 border rounded-lg">
+                                    <option value="ge">Ge</option>
+                                    <option value="en">En</option>
+                                    <option value="de">Ru</option>
+                                </select>
+                            </div>
+                        </div>
                         {/* USER LOGIN */}
                         <button
                             className={`absolute top-2 right-2 md:top-2 md: right-12 lg:right-64 flex justify-center items-center h-6 w-24 bg-orange-950 text-white`}
@@ -142,6 +152,7 @@ export default function Header() {
                             <Link href="/login">შესვლა</Link>
                         </button>
                     </div>
+
                     {/* DESKTOP HEADER MENU */}
                     <ul className="hidden md:flex md:justify-center md:items-center md:gap-2 lg:gap-10">
                         {menuItems.map((item) => (
@@ -150,7 +161,7 @@ export default function Header() {
                                 name={item.name!}
                                 path={item.path}
                                 isActive={pathname === item.path}
-                                additionalClass={`${item.type === 'beforeLogo' ? 'mr-10' : item.type === 'afterLogo' ? 'ml-24' : ''}`}
+                                additionalClass={`${item.type === 'beforeLogo' ? 'mr-10 lg:mr-24' : item.type === 'afterLogo' ? 'ml-24' : ''}`}
                             />
                         ))}
                     </ul>

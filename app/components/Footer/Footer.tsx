@@ -5,11 +5,9 @@ export const footerMenuItems = [
     { name: 'მთავარი', path: '/' },
     { name: 'გალერია', path: '/galery' },
     { name: 'ფასი', path: '/pricing' },
-
     { name: 'სიახლეები', path: '/news' },
     { name: 'კონტაქტები', path: '/contact' },
     { name: 'ჩვენზე', path: '/about' },
-
     { name: 'სწავლება', path: '/learning' },
     { name: 'ვაკანსიები', path: '/vacancies' },
     { name: 'თანამშრომლობა', path: '/cooperation' },
@@ -19,12 +17,15 @@ export default function Footer() {
     return (
         <footer className="h-min text-white bg-yellow-950 p-4">
             {/* MENU AND LOGO\ISO */}
-            <div className="w-11/12 lg:w-4/5 h-96 md:h-36 lg:h-48 mt-4 mx-auto flex justify-center items-center flex-col order-1 md:flex-row md:order-2">
-                <ul className="h-full mx-auto grid grid-rows-5 grid-flow-col md:grid-rows-3 max-[767px]:grid-cols-2 md:gap-x-2 md:order-2 text-left ">
+            <div className="w-11/12 lg:w-4/5 mt-4 mx-auto flex justify-center items-center flex-col order-1 md:flex-row md:order-2">
+                <ul className="h-full mx-auto grid grid-rows-5 grid-flow-col gap-y-8 md:grid-rows-3 max-[767px]:grid-cols-2 md:gap-x-2 md:order-2 text-left">
                     {footerMenuItems.map((item) => (
                         <li key={item.name} className="flex items-center">
-                            <Link href={item.path}>
-                                <span className="hover:underline before:content-['·'] before:mr-2 ">
+                            <Link
+                                href={item.path}
+                                className="before:content-['·'] before:mr-1"
+                            >
+                                <span className="hover:underline">
                                     {item.name}
                                 </span>
                             </Link>
