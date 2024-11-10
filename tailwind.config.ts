@@ -10,6 +10,7 @@ const config: Config = {
         extend: {
             boxShadow: {
                 'inner-orange': 'inset 0 0 10px rgba(255, 165, 0, 0.5)',
+                'inner-orange1': 'inset 0 0 30px rgba(255, 165, 0, 0.5)',
             },
             animation: {
                 'spin-pause': 'spinPause 2s linear infinite',

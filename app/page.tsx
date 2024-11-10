@@ -37,9 +37,6 @@ export default function Home() {
             </div>
 
             <Greetings />
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
         </main>
     )
 }

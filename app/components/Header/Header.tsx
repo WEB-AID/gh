@@ -75,7 +75,7 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed w-screen h-24 lg:h-32 bg-white shadow-inner-orange z-50`}
+            className={`fixed w-screen h-24 lg:h-32 bg-white shadow-inner-orange z-50 md:mr-10 `}
         >
             <div
                 className={`relative h-full flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}
