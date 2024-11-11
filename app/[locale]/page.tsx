@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import Greetings from './components/Greetings/Greetings'
+import Greetings from '../../components/Greetings/Greetings'
 
-export default function Home() {
+export default async function Home() {
     return (
         <main className="flex flex-col">
             <div className="relative">
