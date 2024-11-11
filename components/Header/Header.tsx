@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import Overlay from '@/app/uikit/overlay'
+import LanguageSelector from '../LanguageSelector'
 
 export const menuItems = [
     { name: 'მთავარი', path: '/' },
@@ -29,22 +30,44 @@ export default function Header() {
         setBurgerOpen((prev) => !prev)
     }
 
+    const isActivePath = (path: string) => {
+        const localePrefixes = ['/ru', '/en']
+        const normalizePath = (p: string) => p.replace(/\/$/, '')
+
+        if (path === '/') {
+            return (
+                pathname === '/' ||
+                localePrefixes.some((prefix) => pathname === prefix)
+            )
+        }
+
+        if (!localePrefixes.some((prefix) => pathname.startsWith(prefix))) {
+            return pathname === path
+        }
+
+        return localePrefixes.some((prefix) =>
+            normalizePath(pathname).startsWith(
+                normalizePath(`${prefix}${path}`)
+            )
+        )
+    }
+
     const MenuItem = ({
         name,
         path,
-        isActive,
         onClick,
         additionalClass,
     }: {
         name: string
         path: string
-        isActive: boolean
         onClick?: () => void
         additionalClass?: string
     }) => (
         <li
             onClick={onClick}
-            className={`self-start cursor-pointer hover:text-orange-600 ${isActive ? 'border-b-2 border-orange-300' : ''} ${additionalClass}`}
+            className={`self-start cursor-pointer hover:text-orange-600 ${
+                isActivePath(path) ? 'border-b-2 border-orange-300' : ''
+            } ${additionalClass}`}
         >
             <Link href={path}>{name}</Link>
         </li>
@@ -117,7 +140,6 @@ export default function Header() {
                                     key={item.path}
                                     name={item.name}
                                     path={item.path}
-                                    isActive={pathname === item.path}
                                     onClick={() => {
                                         handleMenuItemClick(item.path)
                                         setBurgerOpen(false)
@@ -136,13 +158,7 @@ export default function Header() {
                         </button>
                         {/* LANGUAGE SELECTOR */}
                         <div className="absolute bottom-2 right-2 md:hidden md:right-8">
-                            <div className="relative">
-                                <select className="p-2 border rounded-lg">
-                                    <option value="ge">Ge</option>
-                                    <option value="en">En</option>
-                                    <option value="de">Ru</option>
-                                </select>
-                            </div>
+                            <LanguageSelector />
                         </div>
                         {/* USER LOGIN */}
                         <button
@@ -160,7 +176,6 @@ export default function Header() {
                                 key={item.path}
                                 name={item.name!}
                                 path={item.path}
-                                isActive={pathname === item.path}
                                 additionalClass={`${item.type === 'beforeLogo' ? 'mr-10 lg:mr-24' : item.type === 'afterLogo' ? 'ml-24' : ''}`}
                             />
                         ))}
@@ -168,13 +183,7 @@ export default function Header() {
                 </nav>
                 {/* LANGUAGE SELECTOR */}
                 <div className="absolute top-4 right-4 md:top-1/2 md:right-8 transform max-[767px]:hidden">
-                    <div className="relative">
-                        <select className="p-2 border rounded-lg">
-                            <option value="ge">Ge</option>
-                            <option value="en">En</option>
-                            <option value="de">Ru</option>
-                        </select>
-                    </div>
+                    <LanguageSelector />
                 </div>
                 {/* USER LOGIN */}
                 <button
