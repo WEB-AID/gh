@@ -9,7 +9,11 @@ interface TranslationsProviderProps {
     children: ReactNode
     locale: string
     namespaces: string[]
-    resources?: Record<string, any>
+    resources?: {
+        [language: string]: {
+            [namespace: string]: Record<string, string>
+        }
+    }
 }
 
 export default function TranslationsProvider({
