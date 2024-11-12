@@ -1,19 +1,24 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 
 export const footerMenuItems = [
-    { name: 'მთავარი', path: '/' },
-    { name: 'გალერია', path: '/galery' },
-    { name: 'ფასი', path: '/pricing' },
-    { name: 'სიახლეები', path: '/news' },
-    { name: 'კონტაქტები', path: '/contact' },
-    { name: 'ჩვენზე', path: '/about' },
-    { name: 'სწავლება', path: '/learning' },
-    { name: 'ვაკანსიები', path: '/vacancies' },
-    { name: 'თანამშრომლობა', path: '/cooperation' },
+    { name: 'mainPage', path: '/' },
+    { name: 'galery', path: '/galery' },
+    { name: 'pricing', path: '/pricing' },
+    { name: 'news', path: '/news' },
+    { name: 'contact', path: '/contact' },
+    { name: 'about', path: '/about' },
+    { name: 'learning', path: '/learning' },
+    { name: 'vacancies', path: '/vacancies' },
+    { name: 'cooperation', path: '/cooperation' },
 ]
 
 export default function Footer() {
+    const { t } = useTranslation()
+
     return (
         <footer className="h-min text-white bg-yellow-950 p-4">
             {/* MENU AND LOGO\ISO */}
@@ -26,7 +31,7 @@ export default function Footer() {
                                 className="before:content-['·'] before:mr-1"
                             >
                                 <span className="hover:underline">
-                                    {item.name}
+                                    {t(`footerMenu:${item.name}`)}
                                 </span>
                             </Link>
                         </li>
@@ -95,13 +100,10 @@ export default function Footer() {
             </div>
             {/* TEXT FIELD */}
             <div className="text-center mt-8 text-gray-300 text-sm">
-                ჩვენთვის უმნიშვნელოვანესია ჩვენი პროდუქციის ხარისხი და
-                უსაფრთხოება. საიტზე მოცემული ინფორმაცია განკუთვნილია საყოველთაო
-                გაცნობისთვის.
+                {t('common:footerFirstText')}
             </div>
             <div className="text-center mt-2 text-gray-300 text-sm">
-                გთხოვთ, დაგვიკავშირდეთ დამატებითი ინფორმაციისთვის და კომერციული
-                შეთავაზებების მისაღებად.
+                {t('common:footerSecondText')}
             </div>
             {/* COPYRIGHT */}
             <div className="text-center mt-8 text-gray-400">

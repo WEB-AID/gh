@@ -35,7 +35,7 @@ export default async function RootLayout({
 }>) {
     // Получаем текущую локаль и инициализируем переводы
     const { locale } = await params
-    const i18nNamespaces = ['common'] // Задаем необходимые пространства имен для лейаута
+    const i18nNamespaces = ['common', 'footerMenu', 'headerMenu'] // Задаем необходимые пространства имен для лейаута
     const { resources } = await initTranslations(locale, i18nNamespaces)
 
     return (

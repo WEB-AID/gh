@@ -6,20 +6,22 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import Overlay from '@/app/uikit/overlay'
 import LanguageSelector from '../LanguageSelector'
+import { useTranslation } from 'react-i18next'
 
 export const menuItems = [
-    { name: 'მთავარი', path: '/' },
-    { name: 'გალერია', path: '/galery' },
-    { name: 'ჩვენზე', path: '/about', type: 'beforeLogo' },
-    { name: 'ფასი', path: '/pricing', type: 'afterLogo' },
-    { name: 'სიახლეები', path: '/news' },
-    { name: 'კონტაქტები', path: '/contact' },
+    { name: 'mainPage', path: '/' },
+    { name: 'galery', path: '/galery' },
+    { name: 'about', path: '/about', type: 'beforeLogo' },
+    { name: 'pricing', path: '/pricing', type: 'afterLogo' },
+    { name: 'news', path: '/news' },
+    { name: 'contact', path: '/contact' },
 ]
 
 export default function Header() {
     const [isBurgerOpen, setBurgerOpen] = useState(false)
     const pathname = usePathname()
     const router = useRouter()
+    const { t } = useTranslation()
 
     const handleMenuItemClick = (path: string) => {
         router.push(path)
@@ -138,7 +140,7 @@ export default function Header() {
                             {menuItems.map((item) => (
                                 <MenuItem
                                     key={item.path}
-                                    name={item.name}
+                                    name={t(`headerMenu:${item.name}`)}
                                     path={item.path}
                                     onClick={() => {
                                         handleMenuItemClick(item.path)
@@ -162,7 +164,7 @@ export default function Header() {
                         </div>
                         {/* USER LOGIN */}
                         <button
-                            className={`absolute top-2 right-2 md:top-2 md: right-12 lg:right-64 flex justify-center items-center h-6 w-24 bg-orange-950 text-white`}
+                            className={`absolute top-2 right-2 md:top-2 md:right-12 lg:right-64 flex justify-center items-center h-6 w-24 bg-orange-950 text-white`}
                             onClick={toggleBurger}
                         >
                             <Link href="/login">შესვლა</Link>
@@ -174,7 +176,7 @@ export default function Header() {
                         {menuItems.map((item) => (
                             <MenuItem
                                 key={item.path}
-                                name={item.name!}
+                                name={t(`headerMenu:${item.name}`)!}
                                 path={item.path}
                                 additionalClass={`${item.type === 'beforeLogo' ? 'mr-10 lg:mr-24' : item.type === 'afterLogo' ? 'ml-24' : ''}`}
                             />
@@ -189,7 +191,7 @@ export default function Header() {
                 <button
                     className={`absolute top-4 right-4 md:top-2 md:right-12 lg:right-64 flex items-center justify-center h-6 w-24 bg-orange-950 text-white max-[767px]:hidden`}
                 >
-                    <Link href="/login">შესვლა</Link>
+                    <Link href="/login">{t('common:login')}</Link>
                 </button>
             </div>
             {isBurgerOpen && <Overlay onClick={toggleBurger} />}
