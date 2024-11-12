@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import Overlay from '@/app/uikit/overlay'
 import LanguageSelector from '../LanguageSelector'
 import { useTranslation } from 'react-i18next'
+import isActivePath from '../helpers/isActivePath'
 
 export const menuItems = [
     { name: 'mainPage', path: '/' },
@@ -23,35 +24,13 @@ export default function Header() {
     const router = useRouter()
     const { t } = useTranslation()
 
-    const handleMenuItemClick = (path: string) => {
-        router.push(path)
-        setBurgerOpen(false)
-    }
-
     const toggleBurger = () => {
         setBurgerOpen((prev) => !prev)
     }
 
-    const isActivePath = (path: string) => {
-        const localePrefixes = ['/ru', '/en']
-        const normalizePath = (p: string) => p.replace(/\/$/, '')
-
-        if (path === '/') {
-            return (
-                pathname === '/' ||
-                localePrefixes.some((prefix) => pathname === prefix)
-            )
-        }
-
-        if (!localePrefixes.some((prefix) => pathname.startsWith(prefix))) {
-            return pathname === path
-        }
-
-        return localePrefixes.some((prefix) =>
-            normalizePath(pathname).startsWith(
-                normalizePath(`${prefix}${path}`)
-            )
-        )
+    const handleMenuItemClick = (path: string) => {
+        router.push(path)
+        setBurgerOpen(false)
     }
 
     const MenuItem = ({
@@ -68,7 +47,9 @@ export default function Header() {
         <li
             onClick={onClick}
             className={`self-start cursor-pointer hover:text-orange-600 ${
-                isActivePath(path) ? 'border-b-2 border-orange-300' : ''
+                isActivePath(path, pathname)
+                    ? 'border-b-2 border-orange-300'
+                    : ''
             } ${additionalClass}`}
         >
             <Link href={path}>{name}</Link>
@@ -189,7 +170,7 @@ export default function Header() {
                 </div>
                 {/* USER LOGIN */}
                 <button
-                    className={`absolute top-4 right-4 md:top-2 md:right-12 lg:right-64 flex items-center justify-center h-6 w-24 bg-orange-950 text-white max-[767px]:hidden`}
+                    className={`absolute w-24 h-6 top-4 right-4 flex items-center justify-center max-[767px]:hidden md:top-2 md:right-12 lg:right-64 bg-orange-950 text-white `}
                 >
                     <Link href="/login">{t('common:login')}</Link>
                 </button>

@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import Greetings from '../../components/Greetings/Greetings'
-import initTranslations from '../i18n'
+import initTranslations, { i18nNamespaces } from '../i18n'
 import TranslationsProvider from '@/components/TranslationsProvider'
-
-const i18nNamespaces = ['mainPage', 'common']
 
 type HomeProps = { params: Promise<{ locale: string }> }
 
@@ -25,22 +23,9 @@ export default async function Home({ params }: HomeProps) {
                         width="0"
                         height="0"
                         sizes="100vw"
-                        className="w-full h-35vh md:hidden"
+                        className="w-full h-35vh md:h-70vh"
                     />
-                    <p className="md:hidden text-xs absolute w-3/4 max-[767px]:top-3 max-[767px]:w-3/5 top-10 max-[767px]:left-6 left-10 text-white font-bold text-lg py-2">
-                        {t('plantPhotoText')}
-                    </p>
-                </div>
-                <div className="relative">
-                    <Image
-                        src="/plant1.jpg"
-                        alt="Plant logo"
-                        width="0"
-                        height="0"
-                        sizes="100vw"
-                        className="w-full h-45vh md:h-70vh max-[767px]:hidden"
-                    />
-                    <p className="max-[767px]:hidden text-3xl absolute w-4/5 top-16 mt-8 lg:mt-4 lg:top-22 lg:text-3xl left-10 text-white font-bold text-lg py-2">
+                    <p className="absolute w-1/2 left-10 top-4 py-2 md:w-4/5 md:top-10 md:mt-8 lg:mt-4 lg:top-22 text-white font-bold text-xs md:text-lg lg:text-3xl">
                         {t('plantPhotoText')}
                     </p>
                 </div>

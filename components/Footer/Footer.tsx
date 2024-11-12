@@ -20,12 +20,12 @@ export default function Footer() {
     const { t } = useTranslation()
 
     return (
-        <footer className="h-min text-white bg-yellow-950 p-4">
+        <footer className="h-min p-4 text-white bg-yellow-950">
             {/* MENU AND LOGO\ISO */}
-            <div className="w-11/12 lg:w-4/5 mt-4 mx-auto flex justify-center items-center flex-col order-1 md:flex-row md:order-2">
-                <ul className="h-full mx-auto grid grid-rows-5 grid-flow-col gap-y-8 md:grid-rows-3 max-[767px]:grid-cols-2 md:gap-x-2 md:order-2 text-left">
+            <div className="w-11/12 lg:w-4/5 mt-4 mx-auto flex justify-center items-center flex-col md:flex-row order-1 md:order-2">
+                <ul className="mx-auto grid grid-rows-5 grid-flow-col gap-y-8 gap-x-2 md:grid-rows-3 max-[767px]:grid-cols-2 md:order-2 text-left">
                     {footerMenuItems.map((item) => (
-                        <li key={item.name} className="flex items-center">
+                        <li key={item.name}>
                             <Link
                                 href={item.path}
                                 className="before:content-['·'] before:mr-1"
@@ -79,7 +79,7 @@ export default function Footer() {
                         strokeWidth="2"
                     />
                 </svg>
-                <div className="mx-auto mt-4 flex order-2 md:order-3">
+                <div className="mx-auto flex order-2 md:order-3 max-[767px]:mt-8">
                     <Image
                         src="/logo2.png"
                         alt="logo2"
@@ -99,14 +99,14 @@ export default function Footer() {
                 </div>
             </div>
             {/* TEXT FIELD */}
-            <div className="text-center mt-8 text-gray-300 text-sm">
+            <div className="mt-8 text-center text-gray-300 text-sm">
                 {t('common:footerFirstText')}
             </div>
-            <div className="text-center mt-2 text-gray-300 text-sm">
+            <div className="mt-2 text-center text-gray-300 text-sm">
                 {t('common:footerSecondText')}
             </div>
             {/* COPYRIGHT */}
-            <div className="text-center mt-8 text-gray-400">
+            <div className="mt-8 text-center text-gray-400">
                 Copyright © 2024 Georgian House LLC
             </div>
         </footer>
