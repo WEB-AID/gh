@@ -167,7 +167,7 @@ export default function Header() {
                             className={`absolute top-2 right-2 md:top-2 md:right-12 lg:right-64 flex justify-center items-center h-6 w-24 bg-orange-950 text-white`}
                             onClick={toggleBurger}
                         >
-                            <Link href="/login">შესვლა</Link>
+                            <Link href="/login">{t('common:login')}</Link>
                         </button>
                     </div>
 
