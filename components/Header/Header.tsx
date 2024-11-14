@@ -8,6 +8,7 @@ import Overlay from '@/app/uikit/overlay'
 import LanguageSelector from '../LanguageSelector'
 import { useTranslation } from 'react-i18next'
 import isActivePath from '../helpers/isActivePath'
+import { Button } from '@/app/uikit/button'
 
 export const menuItems = [
     { name: 'mainPage', path: '/' },
@@ -60,7 +61,12 @@ export default function Header() {
         function handleClickOutside(event: MouseEvent) {
             if (
                 isBurgerOpen &&
-                !(event.target as HTMLElement).closest('.burger-menu')
+                !(
+                    (event.target as HTMLElement).closest('.burger-menu') ||
+                    (event.target as HTMLElement).closest(
+                        '.radix-select-content'
+                    )
+                )
             ) {
                 setBurgerOpen(false)
             }
@@ -140,16 +146,17 @@ export default function Header() {
                             />
                         </button>
                         {/* LANGUAGE SELECTOR */}
-                        <div className="absolute bottom-2 right-2 md:hidden md:right-8">
+                        <div className="absolute bottom-2 right-2 md:hidden md:right-8 font-sans">
                             <LanguageSelector />
                         </div>
                         {/* USER LOGIN */}
-                        <button
-                            className={`absolute top-2 right-2 md:top-2 md:right-12 lg:right-64 flex justify-center items-center h-6 w-24 bg-orange-950 text-white`}
+                        <Button
+                            variant="outline"
                             onClick={toggleBurger}
+                            className={`absolute top-2 right-2 md:top-2 md:right-12 lg:right-64 bg-orange-950 text-white`}
                         >
                             <Link href="/login">{t('common:login')}</Link>
-                        </button>
+                        </Button>
                     </div>
 
                     {/* DESKTOP HEADER MENU */}
@@ -169,11 +176,12 @@ export default function Header() {
                     <LanguageSelector />
                 </div>
                 {/* USER LOGIN */}
-                <button
-                    className={`absolute w-24 h-6 top-4 right-4 flex items-center justify-center max-[767px]:hidden md:top-2 md:right-12 lg:right-64 bg-orange-950 text-white `}
+                <Button
+                    variant="outline"
+                    className={`absolute h-6 top-4 right-4 max-[767px]:hidden md:right-8 lg:right-64 bg-orange-950 text-white`}
                 >
                     <Link href="/login">{t('common:login')}</Link>
-                </button>
+                </Button>
             </div>
             {isBurgerOpen && <Overlay onClick={toggleBurger} />}
         </header>

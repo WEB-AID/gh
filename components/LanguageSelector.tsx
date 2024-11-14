@@ -4,6 +4,15 @@ import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import i18nConfig from '@/i18nConfig'
+import React from 'react'
+import {
+    Select,
+    SelectValue,
+    SelectTrigger,
+    SelectContent,
+    SelectItem,
+    SelectSeparator,
+} from '@/app/uikit/select'
 
 export default function LanguageSelector() {
     const { i18n } = useTranslation()
@@ -11,14 +20,12 @@ export default function LanguageSelector() {
     const router = useRouter()
     const currentPathname = usePathname()
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const newLocale = e.target.value
-
+    const handleChange = (newLocale: string) => {
         const days = 30
         const date = new Date()
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
         const expires = date.toUTCString()
-        document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`
+        document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/;SameSite=Lax`
 
         if (
             currentLocale === i18nConfig.defaultLocale &&
@@ -30,21 +37,20 @@ export default function LanguageSelector() {
                 currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
             )
         }
-
-        router.refresh()
     }
 
     return (
-        <div className="relative">
-            <select
-                className="p-2 border rounded-lg"
-                onChange={handleChange}
-                value={currentLocale}
-            >
-                <option value="ka">Ge</option>
-                <option value="en">En</option>
-                <option value="ru">Ru</option>
-            </select>
-        </div>
+        <Select value={currentLocale} onValueChange={handleChange}>
+            <SelectTrigger>
+                <SelectValue placeholder="Выберите язык" />
+            </SelectTrigger>
+            <SelectContent className="radix-select-content">
+                <SelectItem value="ka">Ge</SelectItem>
+                <SelectSeparator />
+                <SelectItem value="en">En</SelectItem>
+                <SelectSeparator />
+                <SelectItem value="ru">Ru</SelectItem>
+            </SelectContent>
+        </Select>
     )
 }
