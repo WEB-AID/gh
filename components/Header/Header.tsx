@@ -87,13 +87,13 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed w-screen h-24 lg:h-32 bg-white shadow-inner-orange z-50 md:mr-10 text-black`}
+            className={`w-full fixed h-24 lg:h-32 bg-white shadow-inner-orange z-50 md:mr-10 text-black`}
         >
             <div
-                className={`relative h-full flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}
+                className={`w-full relative h-full flex md:justify-center ${isBurgerOpen ? 'items-start' : 'items-center'}`}
             >
                 {/* LOGO */}
-                <div className="absolute top-4 md:mr-5 max-[767px]:right-4">
+                <div className="absolute top-4 lg:top-6 md:mr-5 max-[767px]:right-4">
                     <Link href="/">
                         <Image
                             src="/logo1.png"
