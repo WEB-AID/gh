@@ -45,11 +45,17 @@ export default function LanguageSelector() {
                 <SelectValue placeholder="Выберите язык" />
             </SelectTrigger>
             <SelectContent className="radix-select-content">
-                <SelectItem value="ka">Ge</SelectItem>
+                <SelectItem value="ka">
+                    <span>Ge</span>
+                </SelectItem>
                 <SelectSeparator />
-                <SelectItem value="en">En</SelectItem>
+                <SelectItem value="en">
+                    <span>En</span>
+                </SelectItem>
                 <SelectSeparator />
-                <SelectItem value="ru">Ru</SelectItem>
+                <SelectItem value="ru">
+                    <span>Ru</span>
+                </SelectItem>
             </SelectContent>
         </Select>
     )

@@ -162,7 +162,7 @@ export default function Header() {
                     {/* MOBILE BURGER MENU */}
                     <div
                         className={`burger-menu absolute w-full h-auto md:hidden  bg-white -translate-x-full opacity-0 
-                            transition-transform duration-1000 ${isBurgerOpen ? 'translate-x-0 opacity-100' : ''} flex bg-white shadow-inner-orange`}
+                            transition-transform duration-1000 ${isBurgerOpen ? 'translate-x-0 opacity-100' : ''} flex bg-white shadow-outer-orange`}
                     >
                         <ul className="w-7/12 top-0 left-0 p-8 flex flex-col gap-12">
                             {menuItems.map((item) => (
